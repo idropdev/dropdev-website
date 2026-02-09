@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroBackground from '../components/HeroBackground';
 import IndustryModal from '../components/IndustryModal';
+import ProcessCarousel3D from '../components/ProcessCarousel3D';
 import './Home.css';
 
 // Industry data
@@ -80,8 +81,15 @@ const focusTiles = [
     },
 ];
 
+const layoutModes = ['grid-3x2', 'grid-2x3', 'list-horizontal', 'masonry'];
+
 export default function Home() {
     const [selectedIndustry, setSelectedIndustry] = useState(null);
+    const [layoutMode, setLayoutMode] = useState(0);
+
+    const cycleLayout = () => {
+        setLayoutMode((prev) => (prev + 1) % layoutModes.length);
+    };
 
     return (
         <div className="home">
@@ -89,15 +97,10 @@ export default function Home() {
             <section className="hero">
                 <HeroBackground />
                 <div className="hero-content">
-                    <div className="hero-badge">Innovation Studio & Venture Builder</div>
                     <h1 className="hero-title">
                         Building the Next Generation of{' '}
                         <span className="text-gradient">Vertical AI Companies</span>
                     </h1>
-                    <p className="hero-subtitle">
-                        We design and launch category-defining vertical AI SaaS products and
-                        community-centric marketplace ecosystems. From whiteboard to scale.
-                    </p>
                     <div className="hero-actions">
                         <Link to="/calculator" className="btn btn-primary btn-lg">
                             Estimate Your Build
@@ -147,15 +150,30 @@ export default function Home() {
             {/* Industries Grid */}
             <section className="section section-dark">
                 <div className="container">
-                    <div className="section-header">
-                        <h2>Industries We Transform</h2>
-                        <p>
-                            Click any industry to explore the structured opportunity analysis—
-                            this interaction is intentional.
-                        </p>
+                    <div className="section-header section-header-with-action">
+                        <div className="section-header-content">
+                            <h2>Industries We Transform</h2>
+                            <p>
+                                Click any industry to explore the structured opportunity analysis—
+                                this interaction is intentional.
+                            </p>
+                        </div>
+                        <button
+                            className="layout-toggle-btn"
+                            onClick={cycleLayout}
+                            aria-label="Change layout"
+                        >
+                            <span className="layout-toggle-icon">
+                                {layoutModes[layoutMode] === 'grid-3x2' && '▦'}
+                                {layoutModes[layoutMode] === 'grid-2x3' && '▥'}
+                                {layoutModes[layoutMode] === 'list-horizontal' && '☰'}
+                                {layoutModes[layoutMode] === 'masonry' && '⊞'}
+                            </span>
+                            <span className="layout-toggle-text">Switch View</span>
+                        </button>
                     </div>
 
-                    <div className="industries-grid grid grid-3">
+                    <div className={`industries-grid layout-${layoutModes[layoutMode]}`}>
                         {industries.map((industry) => (
                             <button
                                 key={industry.id}
@@ -163,8 +181,10 @@ export default function Home() {
                                 onClick={() => setSelectedIndustry(industry)}
                             >
                                 <div className="industry-icon">{industry.icon}</div>
-                                <h4>{industry.name}</h4>
-                                <span className="industry-hint">Click to explore →</span>
+                                <div className="industry-content">
+                                    <h4>{industry.name}</h4>
+                                    <span className="industry-hint">Click to explore →</span>
+                                </div>
                             </button>
                         ))}
                     </div>
@@ -182,33 +202,9 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="studio-process">
-                        <div className="process-step">
-                            <div className="step-number">01</div>
-                            <h4>Ideate</h4>
-                            <p>Validate opportunities through rigorous market analysis and technical feasibility assessment.</p>
-                        </div>
-                        <div className="process-connector" />
-                        <div className="process-step">
-                            <div className="step-number">02</div>
-                            <h4>Build</h4>
-                            <p>Design and engineer production-grade products with enterprise-quality architecture.</p>
-                        </div>
-                        <div className="process-connector" />
-                        <div className="process-step">
-                            <div className="step-number">03</div>
-                            <h4>Launch</h4>
-                            <p>Go-to-market with data-driven strategies and initial customer acquisition.</p>
-                        </div>
-                        <div className="process-connector" />
-                        <div className="process-step">
-                            <div className="step-number">04</div>
-                            <h4>Scale</h4>
-                            <p>Accelerate growth through operationalized playbooks and continued technical partnership.</p>
-                        </div>
-                    </div>
+                    <ProcessCarousel3D />
 
-                    <div className="text-center" style={{ marginTop: 'var(--space-3xl)' }}>
+                    <div className="text-center" style={{ marginTop: 'var(--space-xl)' }}>
                         <Link to="/business" className="btn btn-secondary">
                             Learn About Our Process
                         </Link>

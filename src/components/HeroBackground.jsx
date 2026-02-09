@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './HeroBackground.css';
 
 export default function HeroBackground() {
@@ -6,12 +6,32 @@ export default function HeroBackground() {
     const mouseRef = useRef({ x: 0, y: 0 });
     const particlesRef = useRef([]);
     const animationRef = useRef(null);
+    const [isLightMode, setIsLightMode] = useState(false);
+
+    // Watch for theme changes
+    useEffect(() => {
+        const checkTheme = () => {
+            setIsLightMode(document.documentElement.getAttribute('data-theme') === 'light');
+        };
+        checkTheme();
+
+        // Observe theme attribute changes
+        const observer = new MutationObserver(checkTheme);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let width = window.innerWidth;
         let height = window.innerHeight;
+
+        // Theme-aware colors
+        const bgColor = isLightMode ? '#f8fafc' : '#0a0a0f';
+        const bgFade = isLightMode ? 'rgba(248, 250, 252, 0.1)' : 'rgba(10, 10, 15, 0.1)';
+        const connectionColor = isLightMode ? 'rgba(2, 132, 199, ' : 'rgba(56, 189, 248, ';
 
         // Set canvas size
         const setSize = () => {
@@ -46,9 +66,14 @@ export default function HeroBackground() {
                 this.baseOpacity = this.opacity;
                 this.twinkleSpeed = Math.random() * 0.02 + 0.01;
                 this.twinkleOffset = Math.random() * Math.PI * 2;
-                // Color variation - blue to purple
-                this.hue = Math.random() * 60 + 220; // 220-280 (blue to purple)
-                this.saturation = Math.random() * 30 + 50;
+                // Color variation - blue in both modes
+                this.hue = isLightMode
+                    ? Math.random() * 20 + 190  // 190-210 (blue/cyan for light mode)
+                    : Math.random() * 30 + 190; // 190-220 (blue/cyan for dark mode)
+                this.saturation = isLightMode
+                    ? Math.random() * 20 + 70   // Higher saturation for light mode
+                    : Math.random() * 30 + 60;
+                this.lightness = isLightMode ? 45 : 75; // Darker particles for light background
             }
 
             update(time) {
@@ -79,14 +104,14 @@ export default function HeroBackground() {
             draw(ctx) {
                 ctx.beginPath();
                 ctx.arc(this.renderX, this.renderY, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `hsla(${this.hue}, ${this.saturation}%, 80%, ${this.opacity})`;
+                ctx.fillStyle = `hsla(${this.hue}, ${this.saturation}%, ${this.lightness}%, ${this.opacity})`;
                 ctx.fill();
 
                 // Glow effect for larger stars
                 if (this.size > 1.5) {
                     ctx.beginPath();
                     ctx.arc(this.renderX, this.renderY, this.size * 2, 0, Math.PI * 2);
-                    ctx.fillStyle = `hsla(${this.hue}, ${this.saturation}%, 70%, ${this.opacity * 0.2})`;
+                    ctx.fillStyle = `hsla(${this.hue}, ${this.saturation}%, ${this.lightness - 10}%, ${this.opacity * 0.2})`;
                     ctx.fill();
                 }
             }
@@ -112,7 +137,7 @@ export default function HeroBackground() {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].renderX, particles[i].renderY);
                         ctx.lineTo(particles[j].renderX, particles[j].renderY);
-                        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+                        ctx.strokeStyle = connectionColor + opacity + ')';
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
@@ -126,7 +151,7 @@ export default function HeroBackground() {
             const time = Date.now() - startTime;
 
             // Clear with fade effect
-            ctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+            ctx.fillStyle = bgFade;
             ctx.fillRect(0, 0, width, height);
 
             // Update and draw particles
@@ -142,7 +167,7 @@ export default function HeroBackground() {
         };
 
         // Initial fill
-        ctx.fillStyle = '#0a0a0f';
+        ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, width, height);
 
         animate();
@@ -154,7 +179,7 @@ export default function HeroBackground() {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, []);
+    }, [isLightMode]);
 
     return (
         <div className="hero-background">

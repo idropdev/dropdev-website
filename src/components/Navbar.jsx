@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
+import DrippingOverlay from './DrippingOverlay';
 import './Navbar.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [yellowMode, setYellowMode] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,6 +22,15 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   }, [location]);
 
+  // Apply yellow mode class to document for global styling
+  useEffect(() => {
+    if (yellowMode) {
+      document.documentElement.classList.add('yellow-mode');
+    } else {
+      document.documentElement.classList.remove('yellow-mode');
+    }
+  }, [yellowMode]);
+
   const navLinks = [
     { path: '/business', label: 'Business' },
     { path: '/focus-areas', label: 'Focus Areas' },
@@ -29,39 +41,51 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <span className="logo-text">Drop</span>
-          <span className="logo-text logo-accent">Dev</span>
-        </Link>
-
-        <nav className={`navbar-nav ${mobileMenuOpen ? 'nav-open' : ''}`}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="navbar-actions">
-          <Link to="/contact" className="btn btn-primary">
-            Stay in Touch
+    <>
+      <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo">
+            <img src="/DropDev gradient (1).png" alt="DropDev" className="logo-image" />
           </Link>
-          
-          <button 
-            className="mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={`hamburger ${mobileMenuOpen ? 'hamburger-open' : ''}`}></span>
-          </button>
+
+          <nav className={`navbar-nav ${mobileMenuOpen ? 'nav-open' : ''}`}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="navbar-actions">
+            <button
+              className={`yellow-mode-btn ${yellowMode ? 'active' : ''}`}
+              onClick={() => setYellowMode(!yellowMode)}
+              aria-label="Toggle yellow mode"
+            >
+              <span className="drip-icon">💧</span>
+            </button>
+            <ThemeToggle />
+            <Link to="/contact" className="btn btn-primary">
+              Stay in Touch
+            </Link>
+
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span className={`hamburger ${mobileMenuOpen ? 'hamburger-open' : ''}`}></span>
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Dripping Yellow Background */}
+      <DrippingOverlay isActive={yellowMode} color="#f9ab00" />
+    </>
   );
 }
