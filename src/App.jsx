@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToAnchor from './components/ScrollToAnchor';
 import Home from './pages/Home';
 import Business from './pages/Business';
 import FocusAreas from './pages/FocusAreas';
@@ -14,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        <ScrollToAnchor />
         <Navbar />
         <main className="main-content">
           <Routes>

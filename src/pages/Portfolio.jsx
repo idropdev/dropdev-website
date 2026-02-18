@@ -7,7 +7,7 @@ const industries = [
         id: 1,
         name: 'Healthcare',
         icon: '🏥',
-        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop',
+        image: 'https://images.unsplash.com/photo-1538108149393-fdfd816d49cb?w=400&h=300&fit=crop',
         problemSpace: 'Fragmented patient data, inefficient administrative workflows, and lack of personalized care coordination across provider networks.',
         aiOpportunity: 'AI-driven diagnostics, predictive patient outcomes, automated clinical documentation, and intelligent care pathway optimization.',
         marketplaceAngle: 'Connect patients, providers, specialists, and care facilities in a unified ecosystem with transparent pricing and quality metrics.',

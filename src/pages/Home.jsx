@@ -129,7 +129,7 @@ export default function Home() {
                     <div className="focus-grid">
                         {focusTiles.map((tile) => (
                             <Link
-                                to="/focus-areas"
+                                to={`/focus-areas#${tile.id}`}
                                 key={tile.id}
                                 className="focus-tile card card-interactive"
                             >

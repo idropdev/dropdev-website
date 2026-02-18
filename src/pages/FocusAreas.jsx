@@ -17,7 +17,7 @@ export default function FocusAreas() {
             </section>
 
             {/* Vertical AI SaaS */}
-            <section className="section">
+            <section id="vertical-ai" className="section">
                 <div className="container">
                     <div className="focus-section">
                         <div className="focus-header">
@@ -109,7 +109,7 @@ export default function FocusAreas() {
             </section>
 
             {/* Community Marketplace Ecosystems */}
-            <section className="section section-dark">
+            <section id="marketplace" className="section section-dark">
                 <div className="container">
                     <div className="focus-section">
                         <div className="focus-header">
