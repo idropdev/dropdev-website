@@ -73,11 +73,12 @@
 .portfolio-content h3 {
     margin-bottom: var(--space-sm);
     font-size: var(--text-lg);
+    color: var(--color-text-primary, #ffffff);
 }
 
 .portfolio-preview {
     font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text-muted, rgba(255, 255, 255, 0.6));
     line-height: var(--leading-relaxed);
 }
 

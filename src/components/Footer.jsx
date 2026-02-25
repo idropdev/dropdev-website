@@ -37,7 +37,6 @@ export default function Footer() {
                         <nav className="footer-nav">
                             <Link to="/team">Team</Link>
                             <Link to="/about">About</Link>
-                            <Link to="/contact">Contact</Link>
                         </nav>
                     </div>
 
