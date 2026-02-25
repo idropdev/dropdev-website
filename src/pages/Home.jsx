@@ -225,9 +225,9 @@ export default function Home() {
                             <Link to="/calculator" className="btn btn-primary btn-lg">
                                 Cost Calculator
                             </Link>
-                            <Link to="/contact" className="btn btn-secondary btn-lg">
+                            <a href="tel:+19152341444" className="btn btn-secondary btn-lg">
                                 Get in Touch
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

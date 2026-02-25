@@ -10,38 +10,6 @@ const teamMembers = [
         image1: '/assets/team/david-marek-1.jpg',
         image2: '/assets/team/david-marek-2.jpg',
     },
-    {
-        id: 2,
-        name: 'TBA',
-        role: 'Chief Technology Officer',
-        bio: 'Expert in distributed systems and AI infrastructure. Leading the development of our core technological frameworks and innovation strategy.',
-        image1: 'https://images.unsplash.com/photo-1544717297-fa154da09f5b?w=400&h=400&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1544717297-fa154da09f5b?w=400&h=400&fit=crop',
-    },
-    {
-        id: 3,
-        name: 'TBA',
-        role: 'Software Engineer',
-        bio: 'Full-stack expert specializing in scalable web applications and AI integration. Building high-performance solutions for our partners.',
-        image1: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
-    },
-    {
-        id: 4,
-        name: 'TBA',
-        role: 'Software Engineer',
-        bio: 'Full-stack expert specializing in scalable web applications and AI integration. Building high-performance solutions for our partners.',
-        image1: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop',
-    },
-    {
-        id: 5,
-        name: 'TBA',
-        role: 'Software Engineer',
-        bio: 'Full-stack expert specializing in scalable web applications and AI integration. Building high-performance solutions for our partners.',
-        image1: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-    },
 ];
 
 export default function Team() {
@@ -127,7 +95,7 @@ export default function Team() {
                             create category-defining software. If you&apos;re passionate about
                             unlocking data&apos;s potential, we&apos;d love to hear from you.
                         </p>
-                        <a href="/contact" className="btn btn-primary btn-lg">
+                        <a href="tel:+19152341444" className="btn btn-primary btn-lg">
                             Get in Touch
                         </a>
                     </div>

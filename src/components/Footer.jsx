@@ -45,10 +45,8 @@ export default function Footer() {
                     <div className="footer-links">
                         <h4 className="footer-heading">Connect</h4>
                         <nav className="footer-nav">
-                            <a href="https://twitter.com/dropdev" target="_blank" rel="noopener noreferrer">Twitter</a>
-                            <a href="https://linkedin.com/company/dropdev" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                            <a href="https://github.com/dropdev" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="mailto:hello@dropdev.io">hello@dropdev.io</a>
+                            <a href="https://www.linkedin.com/company/dropdev/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="mailto:info@dropdev.co">info@dropdev.co</a>
                         </nav>
                     </div>
                 </div>

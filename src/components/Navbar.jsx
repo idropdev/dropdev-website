@@ -69,9 +69,9 @@ export default function Navbar() {
               <span className="drip-icon">💧</span>
             </button>
             <ThemeToggle />
-            <Link to="/contact" className="btn btn-primary">
+            <a href="tel:+19152341444" className="btn btn-primary">
               Stay in Touch
-            </Link>
+            </a>
 
             <button
               className="mobile-menu-btn"

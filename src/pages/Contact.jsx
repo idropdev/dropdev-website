@@ -189,17 +189,31 @@ export default function Contact() {
                             <div className="info-card">
                                 <h4>Direct Contact</h4>
                                 <div className="info-item">
-                                    <span className="info-icon">📧</span>
+                                    <span className="info-icon">👤</span>
                                     <div className="info-content">
-                                        <strong>Email</strong>
-                                        <a href="mailto:hello@dropdev.io">hello@dropdev.io</a>
+                                        <strong>David Marck</strong>
+                                        <span>Founder</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
-                                    <span className="info-icon">📍</span>
+                                    <span className="info-icon">📞</span>
                                     <div className="info-content">
-                                        <strong>Location</strong>
-                                        <span>San Francisco, CA</span>
+                                        <strong>Phone</strong>
+                                        <a href="tel:+19152341444">(915) 234-1444</a>
+                                    </div>
+                                </div>
+                                <div className="info-item">
+                                    <span className="info-icon">📧</span>
+                                    <div className="info-content">
+                                        <strong>Email</strong>
+                                        <a href="mailto:info@dropdev.co">info@dropdev.co</a>
+                                    </div>
+                                </div>
+                                <div className="info-item">
+                                    <span className="info-icon">🌐</span>
+                                    <div className="info-content">
+                                        <strong>Website</strong>
+                                        <a href="https://dropdev.co" target="_blank" rel="noopener noreferrer">dropdev.co</a>
                                     </div>
                                 </div>
                             </div>
@@ -225,14 +239,8 @@ export default function Contact() {
                             <div className="info-card">
                                 <h4>Connect</h4>
                                 <div className="social-links">
-                                    <a href="https://twitter.com/dropdev" target="_blank" rel="noopener noreferrer" className="social-link">
-                                        Twitter
-                                    </a>
-                                    <a href="https://linkedin.com/company/dropdev" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <a href="https://www.linkedin.com/company/dropdev/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="social-link">
                                         LinkedIn
-                                    </a>
-                                    <a href="https://github.com/dropdev" target="_blank" rel="noopener noreferrer" className="social-link">
-                                        GitHub
                                     </a>
                                 </div>
                             </div>
