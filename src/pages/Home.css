@@ -17,6 +17,20 @@
     animation: fadeInUp 0.8s ease forwards;
 }
 
+.hero-eyebrow {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent-primary);
+    margin-bottom: var(--space-xl);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
 .hero-badge {
     display: inline-block;
     padding: var(--space-sm) var(--space-lg);
@@ -68,6 +82,84 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
+/* AI Tech Stack Grid */
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+}
+
+.tech-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(99, 102, 241, 0.12) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.tech-card:hover {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.15), 0 16px 48px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+}
+
+.tech-card:hover::before {
+    opacity: 1;
+}
+
+.tech-icon {
+    font-size: var(--text-4xl);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.tech-card h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.tech-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .tech-stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .tech-stack-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 /* Focus Grid */
 .focus-grid {
     display: grid;
@@ -79,32 +171,72 @@
     display: block;
     text-align: left;
     position: relative;
-    border-left: 3px solid transparent;
-    background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), var(--color-accent-gradient);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+            #0f172a 0%,
+            #1e293b 40%,
+            #0f2847 70%,
+            #1a1050 100%);
+    background-size: 300% 300%;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.focus-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(56, 189, 248, 0.18) 0%,
+            rgba(99, 102, 241, 0.22) 30%,
+            rgba(14, 165, 233, 0.15) 60%,
+            rgba(139, 92, 246, 0.20) 100%);
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .focus-tile:hover {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(14, 165, 233, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    background-image: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(14, 165, 233, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%), var(--color-accent-gradient);
+    box-shadow: 0 0 48px rgba(56, 189, 248, 0.25), 0 20px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(56, 189, 248, 0.6);
 }
 
-.focus-icon {
-    font-size: var(--text-5xl);
-    margin-bottom: var(--space-lg);
+.focus-tile:hover::before {
+    opacity: 1;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.focus-tile>* {
+    position: relative;
+    z-index: 1;
 }
 
 .focus-tile h3 {
     font-size: var(--text-2xl);
     margin-bottom: var(--space-md);
+    color: #ffffff;
 }
 
 .focus-tile p {
     font-size: var(--text-lg);
     margin-bottom: var(--space-lg);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .focus-features {
@@ -115,13 +247,51 @@
 
 .feature-tag {
     padding: var(--space-sm) var(--space-lg);
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.35) 100%);
-    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--radius-full);
     font-size: var(--text-sm);
     font-weight: 600;
     color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+/* ── Light mode overrides for focus tiles ── */
+[data-theme="light"] .focus-tile {
+    background: linear-gradient(135deg,
+            #f0f9ff 0%,
+            #e0f2fe 40%,
+            #ede9fe 70%,
+            #dbeafe 100%);
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+[data-theme="light"] .focus-tile::before {
+    background: linear-gradient(135deg,
+            rgba(56, 189, 248, 0.25) 0%,
+            rgba(99, 102, 241, 0.20) 30%,
+            rgba(14, 165, 233, 0.18) 60%,
+            rgba(139, 92, 246, 0.22) 100%);
+    background-size: 300% 300%;
+}
+
+[data-theme="light"] .focus-tile:hover {
+    box-shadow: 0 0 48px rgba(14, 165, 233, 0.2), 0 20px 60px rgba(0, 0, 0, 0.1);
+    border-color: rgba(14, 165, 233, 0.6);
+}
+
+[data-theme="light"] .focus-tile h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .focus-tile p {
+    color: rgba(15, 23, 42, 0.7);
+}
+
+[data-theme="light"] .feature-tag {
+    background: rgba(14, 165, 233, 0.12);
+    border-color: rgba(14, 165, 233, 0.3);
+    color: #0369a1;
 }
 
 /* Section Dark */

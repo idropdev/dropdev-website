@@ -1,3 +1,4 @@
+import WorkflowCarousel from '../components/WorkflowCarousel';
 import './FocusAreas.css';
 
 export default function FocusAreas() {
@@ -66,42 +67,10 @@ export default function FocusAreas() {
                                 </div>
                             </div>
 
-                            {/* Interactive Workflow Diagram */}
+                            {/* Interactive Workflow Carousel */}
                             <div className="workflow-diagram">
                                 <h4>How Vertical AI Creates Value</h4>
-                                <div className="workflow-steps">
-                                    <div className="workflow-step">
-                                        <div className="workflow-number">1</div>
-                                        <div className="workflow-content">
-                                            <strong>Domain Data Ingestion</strong>
-                                            <span>Industry-specific training data</span>
-                                        </div>
-                                    </div>
-                                    <div className="workflow-arrow">→</div>
-                                    <div className="workflow-step">
-                                        <div className="workflow-number">2</div>
-                                        <div className="workflow-content">
-                                            <strong>Specialized Model Training</strong>
-                                            <span>Fine-tuned for vertical use cases</span>
-                                        </div>
-                                    </div>
-                                    <div className="workflow-arrow">→</div>
-                                    <div className="workflow-step">
-                                        <div className="workflow-number">3</div>
-                                        <div className="workflow-content">
-                                            <strong>Workflow Integration</strong>
-                                            <span>Embedded in daily operations</span>
-                                        </div>
-                                    </div>
-                                    <div className="workflow-arrow">→</div>
-                                    <div className="workflow-step">
-                                        <div className="workflow-number">4</div>
-                                        <div className="workflow-content">
-                                            <strong>Continuous Improvement</strong>
-                                            <span>Feedback loop strengthens model</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <WorkflowCarousel />
                             </div>
                         </div>
                     </div>

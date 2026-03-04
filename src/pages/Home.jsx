@@ -5,7 +5,7 @@ import IndustryModal from '../components/IndustryModal';
 import ProcessCarousel3D from '../components/ProcessCarousel3D';
 import './Home.css';
 
-// Industry data
+// Industry data — Healthcare listed first per strategy
 const industries = [
     {
         id: 1,
@@ -69,15 +69,41 @@ const focusTiles = [
         id: 'vertical-ai',
         title: 'Vertical AI SaaS',
         description: 'Purpose-built AI solutions that understand industry-specific workflows, terminology, and compliance requirements.',
-        icon: '🤖',
         features: ['Domain Expertise', 'Workflow Integration', 'Compliance-Native'],
     },
     {
         id: 'marketplace',
         title: 'Community Marketplaces',
         description: 'Network-effect platforms that create value through community participation and data aggregation.',
-        icon: '🌐',
         features: ['Network Effects', 'Community Trust', 'Value Loops'],
+    },
+];
+
+// AI consulting technology stack
+const techStack = [
+    {
+        id: 'ocr',
+        icon: '🔍',
+        title: 'OCR & Document Intelligence',
+        description: 'Extract structured data from any document—medical records, contracts, invoices—with near-human accuracy at scale.',
+    },
+    {
+        id: 'rag',
+        icon: '🧠',
+        title: 'RAG Systems',
+        description: 'Retrieval-Augmented Generation that grounds AI answers in your proprietary data, eliminating hallucinations and increasing trust.',
+    },
+    {
+        id: 'local-rag',
+        icon: '🔒',
+        title: 'Local RAG (On-Premise)',
+        description: 'Full RAG pipelines that run inside your network—zero data leaves your infrastructure. Ideal for healthcare, legal, and finance.',
+    },
+    {
+        id: 'local-ai',
+        icon: '⚡',
+        title: 'Local AI Inference',
+        description: 'Deploy open-source LLMs (Llama, Mistral, Gemma) on your own hardware. Complete data sovereignty, no API costs, no lock-in.',
     },
 ];
 
@@ -98,15 +124,18 @@ export default function Home() {
                 <HeroBackground />
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        Building the Next Generation of{' '}
-                        <span className="text-gradient">Vertical AI Companies</span>
+                        We Make the{' '}
+                        <span className="text-gradient">Impossible Possible</span>
                     </h1>
+                    <p className="hero-subtitle">
+                        We bring enterprise-grade AI into your community and your industry—OCR, RAG systems, local AI, and vertical software that empowers people.
+                    </p>
                     <div className="hero-actions">
-                        <Link to="/calculator" className="btn btn-primary btn-lg">
-                            Estimate Your Build
-                        </Link>
-                        <Link to="/business" className="btn btn-secondary btn-lg">
-                            How We Work
+                        <a href="tel:+19152341444" className="btn btn-primary btn-lg">
+                            Talk to Us — +1 (915) 234-1444
+                        </a>
+                        <Link to="/about" className="btn btn-secondary btn-lg">
+                            What We Build
                         </Link>
                     </div>
                 </div>
@@ -115,8 +144,30 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Focus Areas */}
+            {/* AI Technology Stack */}
             <section className="section">
+                <div className="container">
+                    <div className="section-header">
+                        <h2>Our AI Technology Stack</h2>
+                        <p>
+                            We build what most companies only talk about. Real AI systems, delivered and deployed—from cloud to fully local.
+                        </p>
+                    </div>
+
+                    <div className="tech-stack-grid">
+                        {techStack.map((tech) => (
+                            <div key={tech.id} className="tech-card card card-interactive">
+                                <div className="tech-icon">{tech.icon}</div>
+                                <h3>{tech.title}</h3>
+                                <p>{tech.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Focus Areas */}
+            <section className="section section-dark">
                 <div className="container">
                     <div className="section-header">
                         <h2>Our Focus</h2>
@@ -133,7 +184,6 @@ export default function Home() {
                                 key={tile.id}
                                 className="focus-tile card card-interactive"
                             >
-                                <div className="focus-icon">{tile.icon}</div>
                                 <h3>{tile.title}</h3>
                                 <p>{tile.description}</p>
                                 <div className="focus-features">
@@ -148,14 +198,14 @@ export default function Home() {
             </section>
 
             {/* Industries Grid */}
-            <section className="section section-dark">
+            <section className="section">
                 <div className="container">
                     <div className="section-header section-header-with-action">
                         <div className="section-header-content">
                             <h2>Industries We Transform</h2>
                             <p>
                                 Click any industry to explore the structured opportunity analysis—
-                                this interaction is intentional.
+                                we show you exactly how we would outbuild the incumbents.
                             </p>
                         </div>
                         <button
@@ -192,10 +242,10 @@ export default function Home() {
             </section>
 
             {/* Venture Studio Model */}
-            <section className="section">
+            <section className="section section-dark">
                 <div className="container">
                     <div className="section-header">
-                        <h2>The Venture Studio Model</h2>
+                        <h2>How We Work</h2>
                         <p>
                             We don&apos;t just consult—we co-create. Our studio model provides
                             strategy, engineering, design, and capital under one roof.
@@ -218,16 +268,15 @@ export default function Home() {
                     <div className="cta-content">
                         <h2>Ready to Build Something Exceptional?</h2>
                         <p>
-                            Use our cost calculator to get an instant estimate, or reach out
-                            to discuss your vision.
+                            Tell us about your challenge. We will show you how we can build it better—faster, smarter, and with AI at the core.
                         </p>
                         <div className="cta-actions">
-                            <Link to="/calculator" className="btn btn-primary btn-lg">
-                                Cost Calculator
-                            </Link>
-                            <a href="tel:+19152341444" className="btn btn-secondary btn-lg">
+                            <a href="tel:+19152341444" className="btn btn-primary btn-lg">
                                 Get in Touch
                             </a>
+                            <Link to="/portfolio" className="btn btn-secondary btn-lg">
+                                See Our Work
+                            </Link>
                         </div>
                     </div>
                 </div>

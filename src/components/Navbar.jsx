@@ -33,11 +33,13 @@ export default function Navbar() {
 
   const navLinks = [
     { path: '/business', label: 'Business' },
-    { path: '/focus-areas', label: 'Focus Areas' },
-    { path: '/portfolio', label: 'Portfolio' },
-    { path: '/calculator', label: 'Cost Calculator' },
     { path: '/team', label: 'Team' },
     { path: '/about', label: 'About' },
+  ];
+
+  const externalLinks = [
+    { href: 'https://healthatlas.health', label: 'HealthAtlas', target: '_blank' },
+    { href: 'https://mylayerone.co', label: 'MyLayer One', target: '_blank' },
   ];
 
   return (
@@ -58,6 +60,18 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <span className="nav-divider" />
+            {externalLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.target}
+                rel="noopener noreferrer"
+                className="nav-link nav-link-external"
+              >
+                {link.label} ↗
+              </a>
+            ))}
           </nav>
 
           <div className="navbar-actions">
@@ -70,7 +84,7 @@ export default function Navbar() {
             </button>
             <ThemeToggle />
             <a href="tel:+19152341444" className="btn btn-primary">
-              Stay in Touch
+              +1 (915) 234-1444
             </a>
 
             <button

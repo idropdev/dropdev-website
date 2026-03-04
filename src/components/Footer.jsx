@@ -15,8 +15,7 @@ export default function Footer() {
                             <span className="logo-text logo-accent">Dev</span>
                         </Link>
                         <p className="footer-mission">
-                            Building the next generation of category-defining companies through
-                            vertical AI SaaS and community-centric marketplace ecosystems.
+                            AI consulting that empowers communities and industries through OCR, RAG systems, local AI, and purpose-built vertical technology.
                         </p>
                     </div>
 
@@ -27,7 +26,6 @@ export default function Footer() {
                             <Link to="/business">Business</Link>
                             <Link to="/focus-areas">Focus Areas</Link>
                             <Link to="/portfolio">Portfolio</Link>
-                            <Link to="/calculator">Cost Calculator</Link>
                         </nav>
                     </div>
 
