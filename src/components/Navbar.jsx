@@ -39,7 +39,7 @@ export default function Navbar() {
 
   const externalLinks = [
     { href: 'https://healthatlas.health', label: 'HealthAtlas', target: '_blank' },
-    { href: 'https://mylayerone.co', label: 'MyLayer One', target: '_blank' },
+    { href: 'https://mylayerone.com', label: 'MyLayer One', target: '_blank' },
   ];
 
   return (
